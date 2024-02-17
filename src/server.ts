@@ -12,6 +12,7 @@ class App{
         this.http = http.createServer(this.app);
         this.io = new Server(this.http);
         this.listenSocket();
+        this.setupRoutes();
     }
     listenServer(){
         this.http.listen(3000, ()=> console.log('server is running'));
@@ -22,7 +23,9 @@ class App{
         });
     }
     setupRoutes(){
-        this.app
+        this.app.get('/', (req, res)=> {
+            res.sendFile(__dirname + '/index.html');
+        })
     }
 }
 
