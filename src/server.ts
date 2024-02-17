@@ -21,6 +21,9 @@ class App{
           console.log('use connected =>', socket.id);
         });
     }
+    setupRoutes(){
+        this.app
+    }
 }
 
 const app = new App();
