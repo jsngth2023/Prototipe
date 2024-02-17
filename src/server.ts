@@ -19,11 +19,11 @@ class App{
     listenSocket(){
         this.io.on('connection', (socket)=>{
           console.log('use connected =>', socket.id);
-        })
+        });
     }
 }
 
 const app = new App();
 
 app.listenServer();
-app.listenSocket();
+
