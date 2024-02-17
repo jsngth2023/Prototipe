@@ -47,8 +47,8 @@
 
 #messages {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin-top: 5px;
+    width: 98%;
 }
 #messages {
     padding: 0.5rem 1rem;
@@ -61,33 +61,32 @@
     <title>Prototipe Chat</title>
 </head>
 <body>
-    <ul id="messages">
-        <li>Texto</li>
-    </ul>
+    <div id="messages"></div>
  <form id="form" action="">
-   <input id="input" autocomplete="off"/><button>Send</button>
+   <input id="input" autocomplete="off" placeholder="Digite uma mensagem..."/><button>Send</button>
  </form>
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
     var socket = io();
-    const message = document.getElementById('messages')
-    const input = document.getElementById('input')
+    const message = document.getElementById('messages');
+    const input = document.getElementById('input');
 
     document.addEventListener('submit', (e)=> {
-        e.preventDefault()
+        e.preventDefault();
         if(input.value){
             socket.emit('message', input.value);
+            input.value = '';
         }
 
-    })
+    });
 
-    
-    socket.on('message', (msg)=>{
-        document.createElement('li')
-        li.textContent = msg
-        message.appendChild(li)
-    })
+    socket.on('message', (msg) => {
+        const li = document.createElement('div');
+        li.textContent = msg;
+        message.appendChild(li);
+    });
+
 </script>
 
 </body>

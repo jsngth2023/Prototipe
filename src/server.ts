@@ -19,12 +19,12 @@ class App{
     }
     listenSocket(){
         this.io.on('connection', (socket)=>{
-          console.log('use connected =>', socket.id);
+          console.log('user connected =>', socket.id);
 
           socket.on('message', (msg)=> {
+            console.log('socket ~ file: server.ts:24 ~ App ~ socket.on ~ msg:', msg);
             this.io.emit('message', msg);
           })
-
 
         });
     }
